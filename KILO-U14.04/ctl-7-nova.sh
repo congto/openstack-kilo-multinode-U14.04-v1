@@ -2,6 +2,19 @@
 #
 source config.cfg
 
+# Tao user, endpoint
+openstack user create --password $ADMIN_PASS nova
+openstack role add --project service --user nova admin
+openstack service create --name nova --description "OpenStack Compute" compute
+
+openstack endpoint create \
+--publicurl http://$CON_MGNT_IP:8774/v2/%\(tenant_id\)s \
+--internalurl http://$CON_MGNT_IP:8774/v2/%\(tenant_id\)s \
+--adminurl http://$CON_MGNT_IP:8774/v2/%\(tenant_id\)s \
+--region RegionOne \
+compute
+
+
 echo "########## Install NOVA in $CON_MGNT_IP ##########"
 sleep 5 
 apt-get -y install nova-api nova-cert nova-conductor nova-consoleauth nova-novncproxy nova-scheduler python-novaclient

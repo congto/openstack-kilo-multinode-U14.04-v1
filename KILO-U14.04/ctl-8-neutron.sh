@@ -5,6 +5,18 @@
 
 source config.cfg
 
+# Tao user, endpoint
+openstack user create --password $ADMIN_PASS neutron
+openstack role add --project service --user neutron admin
+openstack service create --name neutron --description "OpenStack Networking" network
+ 
+openstack endpoint create \
+  --publicurl http://$CON_MGNT_IP:9696 \
+  --adminurl http://$CON_MGNT_IP:9696 \
+  --internalurl http://$CON_MGNT_IP:9696 \
+  --region RegionOne \
+  network 
+  
 SERVICE_TENANT_ID=`keystone tenant-get service | awk '$2~/^id/{print $4}'`
 
 
