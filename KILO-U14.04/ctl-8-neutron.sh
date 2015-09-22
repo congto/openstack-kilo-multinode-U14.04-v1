@@ -17,7 +17,7 @@ openstack endpoint create \
   --region RegionOne \
   network 
   
-SERVICE_TENANT_ID=`keystone tenant-get service | awk '$2~/^id/{print $4}'`
+# SERVICE_TENANT_ID=`keystone tenant-get service | awk '$2~/^id/{print $4}'`
 
 
 echo "########## Install NEUTRON in $CON_MGNT_IP or NETWORK node ################"
