@@ -55,48 +55,47 @@ default = yes
 EOF
 
 
+sleep 3
+
+/usr/bin/expect <<EOD
+spawn scp  container.ring.gz object.ring.gz account.ring.gz  root@$SWIFT1_MGNT_IP:/etc/swift
+#######################
+expect {
+-re ".*es.*o.*" {
+exp_send "yes\r"
+exp_continue
+}
+-re ".*sword.*" {
+exp_send "$PASS_ROOT\r"
+}
+}
+expect eof
+EOD
+
+
+sleep 3
+
+/usr/bin/expect <<EOD
+spawn scp  container.ring.gz object.ring.gz account.ring.gz  root@$SWIFT2_MGNT_IP:/etc/swift
+#######################
+expect {
+-re ".*es.*o.*" {
+exp_send "yes\r"
+exp_continue
+}
+-re ".*sword.*" {
+exp_send "$PASS_ROOT\r"
+}
+}
+expect eof
+EOD
+
+
+
 chown -R swift:swift /etc/swift
 
 service memcached restart
 service swift-proxy restart
-
-sleep 3
-
-/usr/bin/expect <<EOD
-spawn scp  container.ring.gz object.ring.gz account.ring.gz  root@$SWIFT1_MGNT_IP:/root/
-#######################
-expect {
--re ".*es.*o.*" {
-exp_send "yes\r"
-exp_continue
-}
--re ".*sword.*" {
-exp_send "$PASS_ROOT\r"
-}
-}
-expect eof
-EOD
-
-
-sleep 3
-
-/usr/bin/expect <<EOD
-spawn scp  container.ring.gz object.ring.gz account.ring.gz  root@$SWIFT2_MGNT_IP:/root/
-#######################
-expect {
--re ".*es.*o.*" {
-exp_send "yes\r"
-exp_continue
-}
--re ".*sword.*" {
-exp_send "$PASS_ROOT\r"
-}
-}
-expect eof
-EOD
-
-
-
 
 
 
