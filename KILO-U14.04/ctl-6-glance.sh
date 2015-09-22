@@ -2,6 +2,18 @@
 #
 source config.cfg
 
+# Tao user, endpoint
+openstack user create --password $ADMIN_PASS glance
+openstack role add --project service --user glance admin
+openstack service create --name glance --description "OpenStack Image service" image
+
+openstack endpoint create \
+--publicurl http://$CON_MGNT_IP:9292 \
+--internalurl http://$CON_MGNT_IP:9292 \
+--adminurl http://$CON_MGNT_IP:9292 \
+--region RegionOne \
+image
+
 echo "########## Install GLANCE ##########"
 apt-get -y install glance python-glanceclient
 sleep 10
