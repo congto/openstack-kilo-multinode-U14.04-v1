@@ -9,17 +9,17 @@ rm $iphost
 touch $iphost
 cat << EOF >> $iphost
 127.0.0.1       localhost
-127.0.0.1       swift1
+127.0.0.1       swift2
 $CON_MGNT_IP    controller
 $COM1_MGNT_IP   compute1
 $COM2_MGNT_IP	  compute2
 $NET_MGNT_IP    network
 $CIN_MGNT_IP    cinder
 $SWIFT1_MGNT_IP swift1
+$SWIFT2_MGNT_IP swift2
 
 
 EOF
-
 
 apt-get install xfsprogs rsync -y
 mkfs.xfs /dev/vdb
@@ -39,7 +39,7 @@ uid = swift
 gid = swift
 log file = /var/log/rsyncd.log
 pid file = /var/run/rsyncd.pid
-address = $SWIFT1_MGNT_IP
+address = $SWIFT2_MGNT_IP
  
 [account]
 max connections = 2
@@ -70,7 +70,7 @@ apt-get -y install swift swift-account swift-container swift-object
 
 cat << EOF > /etc/swift/account-server.conf
 [DEFAULT]
-bind_ip = $SWIFT1_MGNT_IP
+bind_ip = $SWIFT2_MGNT_IP
 bind_port = 6002
 user = swift
 swift_dir = /etc/swift
@@ -96,7 +96,7 @@ EOF
 
 cat << EOF > /etc/swift/container-server.conf 
 [DEFAULT]
-bind_ip = $SWIFT1_MGNT_IP
+bind_ip = $SWIFT2_MGNT_IP
 bind_port = 6001
 user = swift
 swift_dir = /etc/swift
@@ -125,7 +125,7 @@ EOF
 cat << EOF >  /etc/swift/object-server.conf
 
 [DEFAULT]
-bind_ip = $SWIFT1_MGNT_IP
+bind_ip = $SWIFT2_MGNT_IP
 bind_port = 6000
 user = swift
 swift_dir = /etc/swift
