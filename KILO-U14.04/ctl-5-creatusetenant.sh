@@ -10,10 +10,6 @@ export OS_URL=http://$CON_MGNT_IP:35357/v2.0
 # export OS_SERVICE_ENDPOINT="http://$CON_MGNT_IP:35357/v2.0"
 # export SERVICE_ENDPOINT="http://$CON_MGNT_IP:35357/v2.0"
  
-get_id () {
-    echo `$@ | awk '/ id / { print $4 }'`
-}
- 
 ###  Identity service
 openstack service create --name keystone --description "OpenStack Identity" identity
 ### Create the Identity service API endpoint
