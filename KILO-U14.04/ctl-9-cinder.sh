@@ -22,14 +22,6 @@ openstack endpoint create \
 --region RegionOne \
 volumev2
 
-  
-# apt-get install lvm2 -y
-
-echo "########## Create Physical Volume and Volume Group (in sdb disk ) ##########"
-# fdisk -l
-# pvcreate /dev/vdb
-# vgcreate cinder-volumes /dev/vdb
-
 #
 echo "########## Install CINDER ##########"
 sleep 3
