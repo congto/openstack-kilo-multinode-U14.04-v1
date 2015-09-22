@@ -44,7 +44,7 @@ sed -i "s/server ntp.ubuntu.com/server $CON_MGNT_IP iburst/g" /etc/ntp.conf
 
 echo "########## Config br-int and br-ex for OpenvSwitch ##########"
 sleep 5
-ovs-vsctl add-br br-int
+# ovs-vsctl add-br br-int
 ovs-vsctl add-br br-ex
 ovs-vsctl add-port br-ex eth1
 
