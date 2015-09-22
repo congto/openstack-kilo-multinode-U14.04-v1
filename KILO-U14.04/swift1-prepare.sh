@@ -156,6 +156,18 @@ https://git.openstack.org/cgit/openstack/swift/plain/etc/container-reconciler.co
 curl -o /etc/swift/object-expirer.conf \
 https://git.openstack.org/cgit/openstack/swift/plain/etc/object-expirer.conf-sample?h=stable/kilo
 
+ cat << EOF >  /etc/swift/swift.conf
+[swift-hash]
+swift_hash_path_prefix = xrfuniounenqjnw
+swift_hash_path_suffix = fLIbertYgibbitZ
+
+[storage-policy:0]
+name = Policy-0
+default = yes
+[swift-constraints]
+
+EOF
+
 
 chown -R swift:swift /srv/node
 mkdir -p /var/cache/swift
