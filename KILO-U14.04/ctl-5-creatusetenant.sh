@@ -51,6 +51,7 @@ echo "export OS_TENANT_NAME=admin" >> admin-openrc.sh
 echo "export OS_USERNAME=admin" >> admin-openrc.sh
 echo "export OS_PASSWORD=$ADMIN_PASS"  >> admin-openrc.sh
 echo "export OS_AUTH_URL=http://$CON_MGNT_IP:35357/v3" >> admin-openrc.sh
+echo "export OS_VOLUME_API_VERSION=2"   >> admin-openrc.sh
 
 sleep 5
 echo "########## Execute environment script ##########"
@@ -67,7 +68,8 @@ echo "export OS_TENANT_NAME=demo" >> demo-openrc.sh
 echo "export OS_USERNAME=demo" >> demo-openrc.sh
 echo "export OS_PASSWORD=$ADMIN_PASS"  >> demo-openrc.sh
 echo "export OS_AUTH_URL=http://$CON_MGNT_IP:35357/v3" >> demo-openrc.sh
+echo "export OS_VOLUME_API_VERSION=2"  >> demo-openrc.sh
 
-chmod +x admin-openrc.sh
+chmod +x demo-openrc.sh
 cp  demo-openrc.sh /root/demo-openrc.sh
 
