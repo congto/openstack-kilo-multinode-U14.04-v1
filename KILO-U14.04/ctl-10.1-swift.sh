@@ -7,11 +7,11 @@ openstack role add --project service --user swift admin
 openstack service create --name swift --description "OpenStack Object Storage" object-store
 
 openstack endpoint create \
-  --publicurl 'http://$CON_MGNT_IP:8080/v1/AUTH_%(tenant_id)s' \
-  --internalurl 'http://$CON_MGNT_IP:8080/v1/AUTH_%(tenant_id)s' \
-  --adminurl http://$CON_MGNT_IP:8080 \
-  --region RegionOne \
-  object-store
+--publicurl 'http://$CON_MGNT_IP:8080/v1/AUTH_%(tenant_id)s' \
+--internalurl 'http://$CON_MGNT_IP:8080/v1/AUTH_%(tenant_id)s' \
+--adminurl http://$CON_MGNT_IP:8080 \
+--region RegionOne \
+object-store
 
   
 echo "##############Install SWIFT###############"
