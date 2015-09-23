@@ -13,6 +13,7 @@ openstack endpoint create \
   --region RegionOne \
   object-store
 
+  
 echo "##############Install SWIFT###############"
 apt-get -y install swift swift-proxy python-swiftclient python-keystoneclient python-keystonemiddleware memcached
 

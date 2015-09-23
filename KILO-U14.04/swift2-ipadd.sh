@@ -11,7 +11,7 @@ apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y
 
 echo "##### Configuring hostname for SWIFT 1 node... #####"
 sleep 3
-echo "swift1" > /etc/hostname
+echo "swift2" > /etc/hostname
 hostname -F /etc/hostname
 
 apt-get install ntp -y
@@ -36,7 +36,7 @@ sed -i 's/server 3.ubuntu.pool.ntp.org/ \
 #server 3.ubuntu.pool.ntp.org/g' /etc/ntp.conf
 
 sed -i "s/server ntp.ubuntu.com/server $CON_MGNT_IP iburst/g" /etc/ntp.conf
-
+service ntp restart
 
 ifaces=/etc/network/interfaces
 test -f $ifaces.orig || cp $ifaces $ifaces.orig
@@ -72,6 +72,7 @@ netmask $NETMASK_ADD
 
 EOF
 
+sed -i 's/without-password/yes/g' /etc/ssh/sshd_config
 sleep 5
 echo "##### Rebooting machine ... #####"
 init 6

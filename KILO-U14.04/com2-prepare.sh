@@ -12,9 +12,12 @@ cat << EOF >> $iphost
 127.0.0.1       localhost
 127.0.0.1        compute1
 $CON_MGNT_IP    controller
-$COM1_MGNT_IP      compute1
-$COM2_MGNT_IP	compute2
-$NET_MGNT_IP     network
+$COM1_MGNT_IP   compute1
+$COM2_MGNT_IP	  compute2
+$NET_MGNT_IP    network
+$CIN_MGNT_IP    cinder
+$SWIFT1_MGNT_IP swift1
+$SWIFT2_MGNT_IP swift2
 EOF
 
 # Update repos

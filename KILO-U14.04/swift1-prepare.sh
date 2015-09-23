@@ -16,6 +16,7 @@ $COM2_MGNT_IP	  compute2
 $NET_MGNT_IP    network
 $CIN_MGNT_IP    cinder
 $SWIFT1_MGNT_IP swift1
+$SWIFT2_MGNT_IP swift2
 
 
 EOF

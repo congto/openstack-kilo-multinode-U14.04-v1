@@ -37,6 +37,7 @@ sed -i 's/server 3.ubuntu.pool.ntp.org/ \
 
 sed -i "s/server ntp.ubuntu.com/server $CON_MGNT_IP iburst/g" /etc/ntp.conf
 
+service ntp restart
 
 ifaces=/etc/network/interfaces
 test -f $ifaces.orig || cp $ifaces $ifaces.orig
@@ -72,6 +73,8 @@ netmask $NETMASK_ADD
 
 EOF
 
+
+sed -i 's/without-password/yes/g' /etc/ssh/sshd_config
 sleep 5
 echo "##### Rebooting machine ... #####"
 init 6

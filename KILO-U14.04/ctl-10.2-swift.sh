@@ -90,14 +90,8 @@ exp_send "$PASS_ROOT\r"
 expect eof
 EOD
 
-
-
 chown -R swift:swift /etc/swift
 
 service memcached restart
 service swift-proxy restart
-
-
-
-
-
+### KET THUC ###
