@@ -40,7 +40,7 @@ rm $filecinder
 cat << EOF > $filecinder
 [DEFAULT]
 rpc_backend = rabbit
-my_ip = $CON_MGNT_IP
+my_ip = $CIN_MGNT_IP
 
 enabled_backends = lvm
 
