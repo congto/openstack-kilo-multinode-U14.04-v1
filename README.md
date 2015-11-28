@@ -40,3 +40,24 @@ bash ctl-3-create-db.sh
 ```sh
 bash ctl-4.keystone.sh
 ```
+
+- Thực thi script tạo user, role trong Keystone
+```sh
+bash ctl-5-creatusetenant.sh
+```
+
+- Chạy script khai báo biến môi trường
+```sh
+source admin-openrc.sh
+```
+
+- Chạy scirpt cài đặt glance
+```sh
+bash ctl-6-glance.sh
+```
+
+
+- Chạy script cài đặt nova
+```sh
+bash ctl-7-nova.sh
+```
