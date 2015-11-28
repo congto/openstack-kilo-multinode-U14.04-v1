@@ -1,14 +1,13 @@
 #!/bin/bash -ex
 
-
 source config.cfg
 #Update Ubuntu
 apt-get -y install ubuntu-cloud-keyring
+
 echo "deb http://ubuntu-cloud.archive.canonical.com/ubuntu trusty-updates/kilo main" \
     | sudo tee /etc/apt/sources.list.d/cloud-archive.list
 
 apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y
-
 echo "########## Install and Config OpenvSwitch ##########"
 apt-get install -y openvswitch-switch 
 
@@ -88,7 +87,6 @@ echo "Config hostname for NETWORK NODE"
 sleep 3
 echo "network" > /etc/hostname
 hostname -F /etc/hostname
-
 echo "##########  Reboot machine after configuring IP ... ##########"
 init 6
 
