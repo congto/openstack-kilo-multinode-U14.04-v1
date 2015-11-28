@@ -24,3 +24,14 @@ chmod +x *.sh
 ```sh
 bash ctl-1-ipadd.sh
 ```
+
+- Máy sẽ khởi động lại sau khi thực thi script trên, đăng nhập với quyền root và thực thi script tiếp theo
+```sh
+su -
+bash ctl-2-prepare.sh
+```
+
+- Thực thi script tiếp
+```sh
+bash ctl-3-create-db.sh
+```
