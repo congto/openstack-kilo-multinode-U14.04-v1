@@ -1,2 +1,26 @@
-### Script cài đặt OpenStack KILO
+# Script cài đặt OpenStack KILO
 - Tách các node CONTROLLER, NETWORK, COMPUTE, CINDER, SWIFT
+
+
+### Thực hiện trên CONTROLLER
+
+```sh
+su -
+
+apt-get update
+apt-get -y install git
+
+git clone https://github.com/congto/openstack-kilo-multinode-U14.04-v1.git
+mv openstack-kilo-multinode-U14.04-v1/KILO-U14.04/ /root/
+rm -rf openstack-kilo-multinode-U14.04-v1
+cd KILO-U14.04
+chmod +x *.sh
+
+```
+
+- Sửa file config.cfg với các IP dự định sẽ setup
+- Thực thi script đầu tiên
+
+```sh
+bash ctl-1-ipadd.sh
+```
