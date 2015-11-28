@@ -31,7 +31,12 @@ su -
 bash ctl-2-prepare.sh
 ```
 
-- Thực thi script tiếp
+- Thực thi script tạo DB
 ```sh
 bash ctl-3-create-db.sh
+```
+
+- Thực thi script cài Keystone
+```sh
+bash ctl-4.keystone.sh
 ```
