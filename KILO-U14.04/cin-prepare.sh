@@ -27,10 +27,7 @@ apt-get -y install qemu lvm2 cinder-volume python-mysqldb
 
 pvcreate /dev/vdb
 vgcreate cinder-volumes /dev/vdb
-
-
 sed  -r -i 's#(filter = )(\[ "a/\.\*/" \])#\1["a\/vdb\/", "r/\.\*\/"]#g' /etc/lvm/lvm.conf
-
 
 echo "########## Configuring for cinder.conf ##########"
 

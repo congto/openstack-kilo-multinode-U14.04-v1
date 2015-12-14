@@ -8,9 +8,9 @@ openstack service create --name cinder --description "OpenStack Block Storage" v
 openstack service create --name cinderv2  --description "OpenStack Block Storage" volumev2
 
 openstack endpoint create \
---publicurl http://$CON_MGNT_IP:8776/v2/%\(tenant_id\)s \
---internalurl http://$CON_MGNT_IP:8776/v2/%\(tenant_id\)s \
---adminurl http://$CON_MGNT_IP:8776/v2/%\(tenant_id\)s \
+--publicurl http://$CON_MGNT_IP:8776/v1/%\(tenant_id\)s \
+--internalurl http://$CON_MGNT_IP:8776/v1/%\(tenant_id\)s \
+--adminurl http://$CON_MGNT_IP:8776/v1/%\(tenant_id\)s \
 --region RegionOne \
 volume
 
