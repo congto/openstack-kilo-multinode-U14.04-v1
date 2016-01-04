@@ -39,11 +39,8 @@ backlog = 4096
 registry_host = 0.0.0.0
 registry_port = 9191
 registry_client_protocol = http
-rabbit_host = localhost
 rabbit_port = 5672
 rabbit_use_ssl = false
-rabbit_userid = guest
-rabbit_password = guest
 rabbit_virtual_host = /
 rabbit_notification_exchange = glance
 rabbit_notification_topic = notifications
@@ -67,6 +64,14 @@ delayed_delete = False
 scrub_time = 43200
 scrubber_datadir = /var/lib/glance/scrubber
 image_cache_dir = /var/lib/glance/image-cache/
+
+#Khai bao cho Ceilomter
+notification_driver = messagingv2
+rpc_backend = rabbit
+rabbit_host = $CON_MGNT_IP
+rabbit_userid = openstack
+rabbit_password = RABBIT_PASS
+
 [oslo_policy]
 
 [database]
@@ -144,8 +149,6 @@ limit_param_default = 25
 rabbit_host = localhost
 rabbit_port = 5672
 rabbit_use_ssl = false
-rabbit_userid = guest
-rabbit_password = guest
 rabbit_virtual_host = /
 rabbit_notification_exchange = glance
 rabbit_notification_topic = notifications
@@ -165,6 +168,15 @@ qpid_reconnect_interval = 0
 qpid_heartbeat = 5
 qpid_protocol = tcp
 qpid_tcp_nodelay = True
+
+
+#Khai bao cho Ceilomter
+notification_driver = messagingv2
+rpc_backend = rabbit
+rabbit_host = $CON_MGNT_IP
+rabbit_userid = openstack
+rabbit_password = RABBIT_PASS
+
 [oslo_policy]
 
 [database]
