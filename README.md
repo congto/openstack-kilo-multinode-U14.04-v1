@@ -66,6 +66,25 @@ bash ctl-7-nova.sh
 bash ctl-8-neutron.sh
 ```
 
+- Cài đặt CINDER
+```sh
+- Nếu node CONTROLLER có HDD dành cho Cinder thì chạy script ctl-9-cinder-ctl-AIO.sh
+
+bash ctl-9-cinder-ctl-AIO.sh
+
+- Nếu node CINDER-VOLUME được tách ra thì sử dụng script ctl-9-cinder.sh
+
+bash ctl-9-cinder.sh
+```
+
+- Cài đặt CEILOMTER
+```bash
+ctl-12-ceilometers.sh
+
+Chú ý: Cần cài cả CEILOMTER trên COMPUTE NODE, CINDER NODE, SWIFT NODE
+```
+
+
 - Cài đặt Horizon
 ```sh
 bash ctl-horizon.sh
