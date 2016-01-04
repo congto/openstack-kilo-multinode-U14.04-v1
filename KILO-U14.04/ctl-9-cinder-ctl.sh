@@ -1,9 +1,14 @@
 #!/bin/bash -ex
-
-### Script nay dung de cai cinder-api va cinder-scheduler tren node Controller
-### cinder-volume cai tren cac node khac
-
+### Script nay dung de cai tat ca thanh phan Cinder tren node Controller
 source config.cfg
+
+apt-get install lvm2 -y
+
+echo "########## Tao Physical Volume va Volume Group (tren disk sdb ) ##########"
+fdisk -l
+pvcreate /dev/vdb
+vgcreate cinder-volumes /dev/vdb
+sed  -r -i 's#(filter = )(\[ "a/\.\*/" \])#\1["a\/vdb\/", "r/\.\*\/"]#g' /etc/lvm/lvm.conf
 
 
 ## Create a cinder user, endpoint
@@ -28,12 +33,12 @@ openstack endpoint create \
 volumev2
 
 #
-echo "########## Install CINDER ##########"
+echo "########## Cai dat cac goi cho CINDER ##########"
 sleep 3
-# apt-get install -y cinder-api cinder-scheduler cinder-volume iscsitarget open-iscsi iscsitarget-dkms python-cinderclient
-apt-get install -y cinder-api cinder-scheduler python-cinderclient
+apt-get install -y cinder-api cinder-scheduler cinder-volume iscsitarget open-iscsi iscsitarget-dkms python-cinderclient
 
-echo "########## Configuring for cinder.conf ##########"
+
+echo "########## Cau hinh file cho cinder.conf ##########"
 
 filecinder=/etc/cinder/cinder.conf
 test -f $filecinder.orig || cp $filecinder $filecinder.orig
@@ -79,21 +84,19 @@ lock_path = /var/lock/cinder
 
 EOF
 
-# sed  -r -e 's#(filter = )(\[ "a/\.\*/" \])#\1[ "a\/sda1\/", "a\/sdb\/", "r/\.\*\/"]#g' /etc/lvm/lvm.conf
 
-# Grant permission for cinder
+# Phan quyen cho file cinder
 chown cinder:cinder $filecinder
 
-echo "########## Syncing Cinder DB ##########"
+echo "########## Dong bo cho cinder ##########"
 sleep 3
-su -s /bin/sh -c "cinder-manage db sync" cinder
- 
-echo "########## Restarting CINDER service ##########"
+cinder-manage db sync
+
+echo "########## Khoi dong lai CINDER ##########"
 sleep 3
 service cinder-api restart
 service cinder-scheduler restart
-# service cinder-volume restart
+service cinder-volume restart
 
-rm -f /var/lib/cinder/cinder.sqlite
+echo "########## Hoan thanh viec cai dat CINDER ##########"
 
-echo "########## Finish setting up CINDER !!! ##########"
