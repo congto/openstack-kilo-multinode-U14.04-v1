@@ -70,7 +70,7 @@ notification_driver = messagingv2
 rpc_backend = rabbit
 rabbit_host = $CON_MGNT_IP
 rabbit_userid = openstack
-rabbit_password = RABBIT_PASS
+rabbit_password = $RABBIT_PASS
 
 [oslo_policy]
 
@@ -146,7 +146,6 @@ log_file = /var/log/glance/registry.log
 backlog = 4096
 api_limit_max = 1000
 limit_param_default = 25
-rabbit_host = localhost
 rabbit_port = 5672
 rabbit_use_ssl = false
 rabbit_virtual_host = /
@@ -175,7 +174,7 @@ notification_driver = messagingv2
 rpc_backend = rabbit
 rabbit_host = $CON_MGNT_IP
 rabbit_userid = openstack
-rabbit_password = RABBIT_PASS
+rabbit_password = $RABBIT_PASS
 
 [oslo_policy]
 
