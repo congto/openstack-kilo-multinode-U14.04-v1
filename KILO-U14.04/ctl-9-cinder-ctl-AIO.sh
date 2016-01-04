@@ -59,6 +59,9 @@ state_path = /var/lib/cinder
 lock_path = /var/lock/cinder
 volumes_dir = /var/lib/cinder/volumes
 
+#Khai bao cho ceilomter
+control_exchange = cinder
+notification_driver = messagingv2
 
 [database]
 connection = mysql://cinder:$CINDER_DBPASS@$CON_MGNT_IP/cinder
