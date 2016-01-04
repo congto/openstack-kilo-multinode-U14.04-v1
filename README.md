@@ -141,3 +141,9 @@ bash com1-ipdd.sh
 ```sh
 bash com1-prepare.sh
 ```
+
+
+- Nếu cài đặt CEILOMTER thì thực hiện thêm script
+```sh
+bash com1-ceilomter.sh
+```
